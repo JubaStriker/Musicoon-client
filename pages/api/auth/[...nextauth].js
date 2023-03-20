@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import SpotifyProvider from "next-auth/providers/spotify"
+import GoogleProvider from "next-auth/providers/google"
 import spotifyApi, { LOGIN_URL } from "../../../lib/spotify"
 
 
@@ -35,6 +36,10 @@ export const authOptions = {
             clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
             authorization: LOGIN_URL
         }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_ID,
+            clientSecret: process.env.GOOGLE_SECRET
+        })
         // ...add more providers here
     ],
 
@@ -66,13 +71,14 @@ export const authOptions = {
             // Access token has expired, so we need to refresh it...
             console.log("ACCESS TOKEN HAS EXPIRED, REFRESHING....")
             return await refreshAccessToken(token)
+        },
 
+        async session({ session, token }) {
+            session.user.accessToken = token.accessToken;
+            session.user.refreshToken = token.refreshToken;
+            session.user.username = token.username;
 
-
-
-
-
-
+            return session;
         }
     }
 }
