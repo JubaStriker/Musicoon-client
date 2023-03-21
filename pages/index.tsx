@@ -1,6 +1,7 @@
 import Link from 'next/dist/client/link'
 import Head from 'next/head'
 import Sidebar from '../components/Sidebar'
+import Center from '../components/Center'
 import { useSession, signOut } from "next-auth/react"
 
 
@@ -42,6 +43,7 @@ export default function Home() {
     </div>
     <main className='bg-black h-screen'>
       <Sidebar></Sidebar>
+      <Center></Center>
     </main>
   </>
 

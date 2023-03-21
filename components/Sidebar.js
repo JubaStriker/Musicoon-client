@@ -4,7 +4,7 @@ import { HiOutlineRss } from 'react-icons/hi'
 
 const Sidebar = () => {
     return (
-        <div className='text-gray-500 p-5 text-sm border-r border-gray-900'>
+        <div className='text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll h-screen'>
             <div className='space-y-4'>
                 <button className='flex items-center gap-2  hover:text-white'>
                     <AiOutlineHome className='h-5 w-5' />
