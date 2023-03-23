@@ -25,10 +25,10 @@ const login = ({ providers }) => {
                 <img className="w-52 mb-5" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png" alt="logo" />
 
                 {/* {Object.values(providers).map((provider) =>
-                <div key={provider.name}>
-                    <button onClick={() => signIn(provider.id, { callbackUrl: "http://localhost:3000" })} className="p-5 rounded-full bg-green-400 mt-2">Login with {provider.name}</button>
-                </div>
-            )} */}
+                    <div key={provider.name}>
+                        <button onClick={() => signIn(provider.id, { callbackUrl: "http://localhost:3000" })} className="p-5 rounded-full bg-green-400 mt-2">Login with {provider.name}</button>
+                    </div>
+                )} */}
 
                 <div>
                     <button onClick={handleGoogleSignIn} className="p-5 rounded-full bg-green-600 mt-2"> Sign in with google</button>

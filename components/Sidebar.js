@@ -1,11 +1,32 @@
 import { AiOutlineHome, AiOutlineSearch, AiOutlinePlusCircle, AiOutlineHeart } from 'react-icons/ai'
 import { MdLibraryMusic } from 'react-icons/md'
 import { HiOutlineRss } from 'react-icons/hi'
+import { BiLogInCircle, BiLogOutCircle } from 'react-icons/bi'
+import Link from 'next/link';
+import { useSession, signOut } from "next-auth/react"
 
 const Sidebar = () => {
+
+    const { data: session } = useSession()
+    const handleSignOut = () => {
+        signOut()
+    }
     return (
-        <div className='text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll h-screen'>
+        <div className='text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide'>
             <div className='space-y-4'>
+                {session ?
+                    // <div>
+                    //   <p  className='text-xl text-right ml-5'>Sign out</p>
+                    // </div>
+                    <button onClick={handleSignOut} className='flex items-center gap-2  hover:text-white'>
+                        <BiLogOutCircle className='h-5 w-5' />
+                        <p>Sign out</p>
+                    </button> :
+                    <div>
+                        <Link href={"/login"} className="flex items-center gap-2  hover:text-white"><BiLogInCircle className='h-5 w-5' />
+                            <p>Login</p></Link >
+                    </div>}
+
                 <button className='flex items-center gap-2  hover:text-white'>
                     <AiOutlineHome className='h-5 w-5' />
                     <p>Home</p>

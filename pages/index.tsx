@@ -11,9 +11,7 @@ export default function Home() {
 
   console.log(session);
 
-  const handleSignOut = () => {
-    signOut()
-  }
+
 
   return <>
     <Head>
@@ -27,23 +25,13 @@ export default function Home() {
       <h1 className="text-3xl font-bold  text-center">
         Musicoon
       </h1>
-      {session ?
-        <div>
-          <p onClick={handleSignOut} className='text-xl text-right ml-5'>Sign out</p>
-        </div> :
-        <div>
-          <Link href={"/login"}><p className='text-xl text-right ml-5'>Login</p></Link >
-        </div>}
-
-      <div className='ml-4'>
-        {/* {session?.user.name} */}
-      </div>
-
 
     </div>
     <main className='bg-black h-screen'>
-      <Sidebar></Sidebar>
-      <Center></Center>
+      <div className='flex'>
+        <Sidebar></Sidebar>
+        <Center></Center>
+      </div>
     </main>
   </>
 
