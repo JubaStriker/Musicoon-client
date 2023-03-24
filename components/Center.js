@@ -20,8 +20,7 @@ const Center = () => {
 
     ]
 
-    // const color = shuffle((colors).pop)
-    // console.log(color)
+
 
     let x = Math.floor((Math.random() * 10) + 1)
 
@@ -31,13 +30,14 @@ const Center = () => {
         setColor(colors[x]);
     }, [])
 
-    console.log(x)
+
 
     return (
         <div className='flex-grow'>
             <header className='absolute top-16 right-8'>
                 <div className='flex items-center bg-red-300 space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2'>
-                    <img className='w-10 h-10 rounded-full' src={session?.user?.image} alt="" />
+                    {session?.user?.image ? <img className='w-10 h-10 rounded-full' src={session?.user?.image} alt="" /> :
+                        <img className='w-10 h-10 rounded-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH9sr2zMrJ4GnLvSX0CpKHJ2lqs1ggkcK5_A&usqp=CAU" alt="" />}
                     <h2>{session?.user?.name}</h2>
                 </div>
             </header>
