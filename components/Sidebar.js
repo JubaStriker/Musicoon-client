@@ -6,12 +6,14 @@ import Link from 'next/link';
 import { useSession, signOut } from "next-auth/react"
 import { useEffect, useState } from 'react';
 import useSpotify from '../Hooks/useSpotify';
+import { useRecoilState } from 'recoil';
+import { playlistIdState } from '../atoms/playlistAtom';
 
 const Sidebar = () => {
 
     const spotifyApi = useSpotify()
     const [playlists, setPlaylists] = useState([])
-    const [playlistId, setPlaylistId] = useState(null)
+    const [playlistId, setPlaylistId] = useRecoilState(playlistIdState)
 
     const { data: session } = useSession()
     useEffect(() => {
@@ -27,8 +29,8 @@ const Sidebar = () => {
         signOut()
     }
     return (
-        <div className='text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide'>
-            <div className='space-y-4'>
+        <div className='text-gray-500 p-5 text-xs lg:text-sm sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex border-r border-gray-900 overflow-y-scroll min-h-screen scrollbar-hide bg-black'>
+            <div className='space-y-4 bg-black'>
                 {session ?
                     <button onClick={handleSignOut} className='flex items-center gap-2  hover:text-white'>
                         <BiLogOutCircle className='h-5 w-5' />
